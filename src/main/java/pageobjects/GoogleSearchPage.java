@@ -3,22 +3,33 @@ package pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class GoogleSearchPage extends BasePage {
-    private By searchField = By.id("lst-ib");
-    private By wikiArmeniaLink = By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div/div/h3/a");
+    private By searchField = By.cssSelector("input#lst-ib");
+    private By searchButton = By.cssSelector("input[name='btnK']");
+    public By wikiArmeniaLink = By.xpath("//cite[@class = '_Rm' and text()= 'https://en.wikipedia.org/wiki/Armenia']");
 
     public GoogleSearchPage(WebDriver webDriver) {
         super(webDriver);
-        visit("https://www.google.com/?gws_rd=cr&dcr=0&ei=vLM2Wt7QGs6akwXTxprIBQ");
+        visit("https://www.google.com/");
     }
 
-    public void search(String value) {
-        find(searchField).sendKeys(Keys.RETURN);
+    public void clickSearchButton() {
+        click(searchButton);
     }
 
-    public void findArmenia() {
-        find(wikiArmeniaLink).click();
-        getUrl().contains("/Armenia");
+    public void typeSearchText(String text) {
+        type(searchField, text);
     }
+
+    public void search(String text) {
+        typeSearchText(text);
+        clickSearchButton();
+    }
+
+    public boolean isSearchResultsDisplayed(WebElement element) {
+        return isDisplayed(element);
+    }
+
 }

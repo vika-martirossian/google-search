@@ -1,8 +1,10 @@
 package pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 
 public class BasePage {
     private WebDriver driver;
@@ -19,16 +21,54 @@ public class BasePage {
         return driver.findElement(locator);
     }
 
-    public WebElement click() {
-        return click();
+    public WebElement find(String cssSelector) {
+        return find(By.cssSelector(cssSelector));
     }
 
-    public CharSequence[] type(CharSequence... sendKeys) {
-        return sendKeys;
+    public void click(By locator) {
+        click(find(locator));
     }
 
-    public boolean isDisplayed() {
-        return isDisplayed();
+    public void click(WebElement element) {
+        element.click();
+    }
+
+    public void click(String cssSelector) {
+        click(find(cssSelector));
+    }
+
+    public void type(By locator, String text) {
+        type(find(locator), text);
+    }
+
+    public void type(WebElement element, String text) {
+        element.sendKeys(text);
+    }
+
+    public void type(String cssSelector, String text) {
+        type(find(cssSelector), text);
+    }
+
+    public boolean isDisplayed(WebElement element) {
+        try{
+            element.isDisplayed();
+        }catch (NoSuchElementException e){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isDisplayed(By locator) {
+        try{
+            isDisplayed(find(locator));
+        }catch (NoSuchElementException e){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isDisplayed(String cssSelector){
+        return isDisplayed(find(cssSelector));
     }
 
     public String getUrl() {
