@@ -2,12 +2,11 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class GoogleSearchPage extends BasePage {
     private By searchField = By.cssSelector("input#lst-ib");
     private By searchButton = By.cssSelector("input[name='btnK']");
-    public By wikiArmeniaLink = By.xpath("//cite[@class = '_Rm' and text()= 'https://en.wikipedia.org/wiki/Armenia']");
+    private By wikiArmeniaLink = By.xpath("//cite[@class = '_Rm' and text()= 'https://en.wikipedia.org/wiki/Armenia']");
 
     public GoogleSearchPage(WebDriver webDriver) {
         super(webDriver);
@@ -27,8 +26,7 @@ public class GoogleSearchPage extends BasePage {
         clickSearchButton();
     }
 
-    public boolean isSearchResultsDisplayed(WebElement element) {
-        return isDisplayed(element);
+    public boolean isSearchResultsDisplayed() {
+        return isDisplayed(wikiArmeniaLink);
     }
-
 }

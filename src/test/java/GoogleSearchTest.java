@@ -20,7 +20,7 @@ public class GoogleSearchTest {
     @Test()
     public void search() {
         searchPage.search("Armenia");
-        Assert.assertTrue(searchPage.isDisplayed(searchPage.wikiArmeniaLink));
+        Assert.assertTrue(searchPage.isSearchResultsDisplayed());
     }
 
     @AfterMethod
