@@ -1,9 +1,10 @@
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageobjects.GoogleSearchPage;
+
+import static org.testng.Assert.assertTrue;
 
 
 public class GoogleSearchTest {
@@ -17,10 +18,11 @@ public class GoogleSearchTest {
         searchPage = new GoogleSearchPage(driver);
     }
 
-    @Test()
+    @Test
     public void search() {
         searchPage.search("Armenia");
-        Assert.assertTrue(searchPage.isSearchResultsDisplayed());
+        assertTrue(searchPage.getFirstResult().getText().equals("Armenia - Wikipedia"), "No Armenia here");
+        assertTrue(searchPage.getResults(), "No Results are displayed");
     }
 
     @AfterMethod

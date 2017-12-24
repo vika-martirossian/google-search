@@ -1,9 +1,10 @@
 package pageobjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 
 public class BasePage {
@@ -73,5 +74,39 @@ public class BasePage {
 
     public String getUrl() {
         return driver.getCurrentUrl();
+    }
+
+    public boolean isNotDisplayed(By locator) {
+        try{
+            isDisplayed(find(locator));
+        }catch (NoSuchElementException e){
+            return true;
+        }
+        return false;
+    }
+
+
+    public List <WebElement> findElements(By locator) {
+        return driver.findElements(locator);
+    }
+
+    public boolean isElementDisplayed(WebElement element, Integer timeout) {
+        try{
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            wait.until(ExpectedConditions.visibilityOf(element));
+        }catch (TimeoutException e){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isElementInvisible(WebElement element, Integer timeout) {
+        try{
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            wait.until(ExpectedConditions.visibilityOf(element));
+        }catch (TimeoutException e){
+            return true;
+        }
+        return false;
     }
 }
