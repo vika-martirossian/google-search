@@ -22,9 +22,9 @@ public class LoadingPageTest {
         public void loadingPage() {
             loadingPage.clickTheButton();
             assertTrue(loadingPage.isLoadingDisplayed(), "Loading is not displayed");
+            assertTrue(loadingPage.isLoadingInvisible(), "Loading is not hidden");
             assertTrue(loadingPage.isFinishDisplayed());
             assertEquals(loadingPage.getFinish().getText(), "Hello World!");
-            assertTrue(loadingPage.isLoadingInvisible(), "Loading is not hidden");
         }
 
 

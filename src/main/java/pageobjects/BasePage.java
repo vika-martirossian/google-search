@@ -103,10 +103,10 @@ public class BasePage {
     public boolean isElementInvisible(WebElement element, Integer timeout) {
         try{
             WebDriverWait wait = new WebDriverWait(driver, timeout);
-            wait.until(ExpectedConditions.visibilityOf(element));
+            wait.until(ExpectedConditions.invisibilityOf(element));
         }catch (TimeoutException e){
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 }
