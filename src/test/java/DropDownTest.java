@@ -23,6 +23,13 @@ public class DropDownTest {
         assertEquals(dropDownPage.getSelectedOption(), "Option 1");
     }
 
+    @Test
+    public void alert() {
+        dropDownPage.forceAlert();
+        dropDownPage.closeAlert();
+
+    }
+
     @AfterMethod
     public void tearDown() {
         driver.close();

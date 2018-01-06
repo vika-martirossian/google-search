@@ -1,12 +1,13 @@
 package pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class DropDownPage extends BasePage{
+public class DropDownPage extends BasePage {
     public DropDownPage(WebDriver webDriver) {
         super(webDriver);
         visit("http://the-internet.herokuapp.com/dropdown");
@@ -22,8 +23,8 @@ public class DropDownPage extends BasePage{
 
     public void selectOption(String optionName) {
         List<WebElement> options = getDropdownOptions();
-        for (WebElement option:options) {
-            if(option.getText().equals(optionName)) {
+        for (WebElement option : options) {
+            if (option.getText().equals(optionName)) {
                 option.click();
             }
         }
@@ -31,10 +32,18 @@ public class DropDownPage extends BasePage{
 
     public String getSelectedOption() {
         List<WebElement> options = getDropdownOptions();
-        for (WebElement option:options) {
-            if(option.isSelected()) {
-               return option.getText();
+        for (WebElement option : options) {
+            if (option.isSelected()) {
+                return option.getText();
             }
-        } return null;
+        }
+        return null;
+    }
+
+    public void forceAlert() {
+        ((JavascriptExecutor) driver).executeScript("alert('Hello! I am an alert box!!');");
+    }
+    public void closeAlert() {
+        driver.switchTo().alert().accept();
     }
 }
