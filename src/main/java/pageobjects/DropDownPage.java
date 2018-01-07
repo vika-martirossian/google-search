@@ -43,6 +43,7 @@ public class DropDownPage extends BasePage {
     public void forceAlert() {
         ((JavascriptExecutor) driver).executeScript("alert('Hello! I am an alert box!!');");
     }
+
     public void closeAlert() {
         driver.switchTo().alert().accept();
     }
