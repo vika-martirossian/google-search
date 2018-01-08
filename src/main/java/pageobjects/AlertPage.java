@@ -19,7 +19,7 @@ public class AlertPage extends BasePage {
     }
 
     public void closeAlert() {
-        driver.switchTo().alert().accept();
+        alert().accept();
     }
 
     public boolean resultIsShown() {
@@ -30,12 +30,12 @@ public class AlertPage extends BasePage {
         return find(resultText).getText();
     }
 
-    public void clickToComfirm() {
+    public void clickToConfirm() {
         click(confirmButton);
     }
 
     public void cancelAlert() {
-        driver.switchTo().alert().dismiss();
+        alert().dismiss();
     }
 
     public void clickOnPrompt() {
@@ -43,6 +43,6 @@ public class AlertPage extends BasePage {
     }
 
     public void typeInThePrompt(String text) {
-        driver.switchTo().alert().sendKeys(text);
+        alert().sendKeys(text);
     }
 }

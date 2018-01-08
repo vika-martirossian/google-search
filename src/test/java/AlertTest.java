@@ -27,7 +27,7 @@ public class AlertTest {
 
     @Test
     public void confirmTheAlert() {
-        alertPage.clickToComfirm();
+        alertPage.clickToConfirm();
         alertPage.closeAlert();
         assertTrue(alertPage.resultIsShown(), "Alert is not displayed");
         assertTrue(alertPage.resultText().contains("You clicked: Ok"), "Text is incorrect");
@@ -35,7 +35,7 @@ public class AlertTest {
 
     @Test
     public void cancelTheAlert() {
-        alertPage.clickToComfirm();
+        alertPage.clickToConfirm();
         alertPage.cancelAlert();
         assertTrue(alertPage.resultIsShown(), "Alert is not displayed");
         assertTrue(alertPage.resultText().contains("You clicked: Cancel"), "Text is incorrect");

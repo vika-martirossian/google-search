@@ -34,10 +34,6 @@ public class BasePage {
         element.click();
     }
 
-    public void click(String cssSelector) {
-        click(find(cssSelector));
-    }
-
     public void type(By locator, String text) {
         type(find(locator), text);
     }
@@ -46,30 +42,22 @@ public class BasePage {
         element.sendKeys(text);
     }
 
-    public void type(String cssSelector, String text) {
-        type(find(cssSelector), text);
-    }
-
     public boolean isDisplayed(WebElement element) {
-        try{
+        try {
             element.isDisplayed();
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return false;
         }
         return true;
     }
 
     public boolean isDisplayed(By locator) {
-        try{
+        try {
             isDisplayed(find(locator));
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return false;
         }
         return true;
-    }
-
-    public boolean isDisplayed(String cssSelector){
-        return isDisplayed(find(cssSelector));
     }
 
     public String getUrl() {
@@ -77,36 +65,41 @@ public class BasePage {
     }
 
     public boolean isNotDisplayed(By locator) {
-        try{
+        try {
             isDisplayed(find(locator));
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return true;
         }
         return false;
     }
 
 
-    public List <WebElement> findElements(By locator) {
+    public List<WebElement> findElements(By locator) {
         return driver.findElements(locator);
     }
 
     public boolean isElementDisplayed(WebElement element, Integer timeout) {
-        try{
+        try {
             WebDriverWait wait = new WebDriverWait(driver, timeout);
             wait.until(ExpectedConditions.visibilityOf(element));
-        }catch (TimeoutException e){
+        } catch (TimeoutException e) {
             return false;
         }
         return true;
     }
 
     public boolean isElementInvisible(WebElement element, Integer timeout) {
-        try{
+        try {
             WebDriverWait wait = new WebDriverWait(driver, timeout);
             wait.until(ExpectedConditions.invisibilityOf(element));
-        }catch (TimeoutException e){
+        } catch (TimeoutException e) {
             return false;
         }
         return true;
+    }
+
+
+    public Alert alert() {
+        return driver.switchTo().alert();
     }
 }
