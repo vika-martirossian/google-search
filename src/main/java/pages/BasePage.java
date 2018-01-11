@@ -1,4 +1,4 @@
-package pageobjects;
+package pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,6 +9,8 @@ import java.util.List;
 
 public class BasePage {
     protected WebDriver driver;
+    public static final String BASE_URL =
+            System.getProperty("selenium.url", "http://the-internet.herokuapp.com");
 
     public BasePage(WebDriver webDriver) {
         this.driver = webDriver;

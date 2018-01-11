@@ -1,4 +1,4 @@
-package pageobjects;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -7,10 +7,16 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static setup.DriverSetup.getDriver;
+
 public class DropDownPage extends BasePage {
-    public DropDownPage(WebDriver webDriver) {
-        super(webDriver);
-        visit("http://the-internet.herokuapp.com/dropdown");
+    public DropDownPage() {
+        super(getDriver());
+        visit(url());
+    }
+
+    public String url() {
+        return BASE_URL + "/dropdown";
     }
 
     public WebElement getDropdown() {

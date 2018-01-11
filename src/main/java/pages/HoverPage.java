@@ -1,15 +1,21 @@
-package pageobjects;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import static setup.DriverSetup.getDriver;
+
 public class HoverPage extends BasePage{
 
-    public HoverPage(WebDriver webDriver) {
-        super(webDriver);
-        visit("http://the-internet.herokuapp.com/hovers");
+    public HoverPage() {
+        super(getDriver());
+        visit(url());
+    }
+
+    public String url() {
+        return BASE_URL + "/hovers";
     }
 
     public void hoverElement(WebElement element) {

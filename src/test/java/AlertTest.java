@@ -1,20 +1,15 @@
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pageobjects.AlertPage;
+import pages.AlertPage;
 
 import static org.testng.Assert.assertTrue;
 
 public class AlertTest {
-    private ChromeDriver driver;
     private AlertPage alertPage;
 
     @BeforeMethod
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "/home/vika/selenium-drivers/chromedriver");
-        driver = new ChromeDriver();
-        alertPage = new AlertPage(driver);
+        alertPage = new AlertPage();
     }
 
     @Test
@@ -58,9 +53,4 @@ public class AlertTest {
         assertTrue(alertPage.resultText().contains("null"), "Text is incorrect");
     }
 
-    @AfterMethod
-    public void tearDown() {
-        driver.close();
-        driver.quit();
-    }
 }

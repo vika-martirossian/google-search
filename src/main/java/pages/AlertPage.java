@@ -1,7 +1,10 @@
-package pageobjects;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import static setup.DriverSetup.getDriver;
+
 
 public class AlertPage extends BasePage {
     private By alertButton = By.xpath("//button[text()='Click for JS Alert']");
@@ -9,9 +12,13 @@ public class AlertPage extends BasePage {
     private By promptButton = By.xpath("//button[text()='Click for JS Prompt']");
     private By resultText = By.id("result");
 
-    public AlertPage(WebDriver webDriver) {
-        super(webDriver);
-        visit("http://the-internet.herokuapp.com/javascript_alerts");
+    public AlertPage() {
+        super(getDriver());
+        visit(url());
+    }
+
+    public String url() {
+        return BASE_URL + "/javascript_alerts";
     }
 
     public void clickForTheAlert() {

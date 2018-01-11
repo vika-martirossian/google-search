@@ -2,7 +2,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pageobjects.WindowPage;
+import pages.WindowPage;
 
 public class MultiWindowTest {
     public ChromeDriver driver;
@@ -13,7 +13,7 @@ public class MultiWindowTest {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "/home/vika/selenium-drivers/chromedriver");
         driver = new ChromeDriver();
-        windowPage = new WindowPage(driver);
+        windowPage = new WindowPage();
     }
 
     @Test

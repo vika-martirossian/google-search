@@ -1,11 +1,15 @@
-package pageobjects;
+package pages;
 
-import org.openqa.selenium.WebDriver;
+import static setup.DriverSetup.getDriver;
 
 public class WindowPage extends BasePage{
-    public WindowPage(WebDriver webDriver) {
-        super(webDriver);
-        visit("http://the-internet.herokuapp.com/windows");
+    public WindowPage() {
+        super(getDriver());
+        visit(url());
+    }
+
+    public String url() {
+        return BASE_URL + "/windows";
     }
 
     public void clickLink() {
