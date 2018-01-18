@@ -1,10 +1,8 @@
-import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.DragAndDropPage;
 
 import static org.testng.Assert.assertEquals;
-import static setup.DriverSetup.getDriver;
 
 
 class DragDropTest extends BaseTest{

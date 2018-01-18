@@ -4,7 +4,7 @@ import pages.AlertPage;
 
 import static org.testng.Assert.assertTrue;
 
-public class AlertTest {
+public class AlertTest extends BaseTest {
     private AlertPage alertPage;
 
     @BeforeMethod
