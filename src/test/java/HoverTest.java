@@ -6,7 +6,7 @@ import pages.HoverPage;
 
 import static org.testng.AssertJUnit.assertTrue;
 
-public class HoverTest {
+public class HoverTest extends BaseTest{
     private ChromeDriver driver;
     private HoverPage hoverPage;
 
@@ -18,11 +18,12 @@ public class HoverTest {
     }
 
     @Test
-    public void hoverPage() {
+    public void hover() {
         assertTrue("Header is shown", hoverPage.isHeaderHidden());
         hoverPage.hoverAvatar();
         assertTrue("Header is not visible", hoverPage.isHeaderDisplayed());
-        assertTrue("Header text is not correct", hoverPage.getHeader().getText().contains("name: user1"));
+        assertTrue("Header text is not correct", hoverPage.getHeader().getText()
+                .contains("name: user1"));
     }
 
     @AfterMethod

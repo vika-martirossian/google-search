@@ -6,7 +6,7 @@ import pages.DropDownPage;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-public class DropDownTest {
+public class DropDownTest extends BaseTest{
     private ChromeDriver driver;
     private DropDownPage dropDownPage;
 

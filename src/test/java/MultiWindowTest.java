@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.WindowPage;
 
-public class MultiWindowTest {
+public class MultiWindowTest extends BaseTest {
     public ChromeDriver driver;
     private WindowPage windowPage;
 
@@ -20,11 +20,5 @@ public class MultiWindowTest {
     public void windowChange() {
         windowPage.clickLink();
         windowPage.switchToWindow(0);
-    }
-
-    @AfterMethod
-    public void tearDown(){
-        driver.close();
-        driver.quit();
     }
 }
