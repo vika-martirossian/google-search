@@ -4,26 +4,30 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import sun.rmi.runtime.Log;
 
 import java.util.List;
 
+import static setup.DriverSetup.getDriver;
 
-public abstract class BasePage<T> {
+
+public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableComponent<T> {
     Logger log = Logger.getLogger(Log.class.getName());
     protected WebDriver driver;
     public static final String BASE_URL =
             System.getProperty("selenium.url", "http://the-internet.herokuapp.com");
 
-    public BasePage(WebDriver webDriver) {
-        this.driver = webDriver;
+    public BasePage() {
+        driver = getDriver();
+        PageFactory.initElements(driver, this);
     }
 
     public void visit(String url) {
         log.info("Visiting " + url);
         driver.get(url);
-        PageFactory.initElements(driver, this);
+        this.get();
     }
 
     public WebElement find(By locator) {
@@ -104,9 +108,25 @@ public abstract class BasePage<T> {
         return true;
     }
 
-
     public Alert alert() {
         log.info("Alerting");
         return driver.switchTo().alert();
     }
+
+    public WebElement waitForElement(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        return wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public abstract String getUrl();
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        driver.getCurrentUrl().contains(getUrl());
+    }
+
 }

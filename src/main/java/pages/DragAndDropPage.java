@@ -1,13 +1,17 @@
 package pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import sun.rmi.runtime.Log;
 
 import static setup.DriverSetup.getDriver;
 
 public class DragAndDropPage extends BasePage {
+    Logger log = Logger.getLogger(Log.class.getName());
+
     @FindBy(css = ".ui-draggable")
     private WebElement draggable;
 
@@ -16,8 +20,19 @@ public class DragAndDropPage extends BasePage {
 
 
     public DragAndDropPage() {
-        super(getDriver());
         visit(getUrl());
+    }
+
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        log.info("i am in isLoaded!");
+        waitForElement(draggable);
+
     }
 
     public String getUrl() {

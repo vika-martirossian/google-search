@@ -4,8 +4,7 @@ import pages.DragAndDropPage;
 
 import static org.testng.Assert.assertEquals;
 
-
-class DragDropTest extends BaseTest{
+public class DragAndDropTest extends BaseTest {
     private DragAndDropPage dragAndDropPage;
 
     @BeforeMethod

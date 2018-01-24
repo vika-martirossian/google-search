@@ -4,12 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import static setup.DriverSetup.getDriver;
-
 public class HoverPage extends BasePage{
 
     public HoverPage() {
-        super(getDriver());
         visit(url());
     }
 
@@ -36,5 +33,10 @@ public class HoverPage extends BasePage{
 
     public WebElement getHeader() {
         return find(By.className("figcaption"));
+    }
+
+    @Override
+    public String getUrl() {
+        return null;
     }
 }

@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import static setup.DriverSetup.getDriver;
 
@@ -13,7 +12,6 @@ public class AlertPage extends BasePage {
     private By resultText = By.id("result");
 
     public AlertPage() {
-        super(getDriver());
         visit(url());
     }
 
@@ -51,5 +49,10 @@ public class AlertPage extends BasePage {
 
     public void typeInThePrompt(String text) {
         alert().sendKeys(text);
+    }
+
+    @Override
+    public String getUrl() {
+        return null;
     }
 }

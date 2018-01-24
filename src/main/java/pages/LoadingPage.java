@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import static setup.DriverSetup.getDriver;
 
 
 public class LoadingPage extends BasePage {
@@ -14,7 +13,6 @@ public class LoadingPage extends BasePage {
     private WebElement loadingText;
 
     public LoadingPage() {
-        super(getDriver());
         visit(url());
 
     }
@@ -41,5 +39,10 @@ public class LoadingPage extends BasePage {
 
     public boolean isLoadingInvisible() {
         return isElementInvisible(loadingText, 10);
+    }
+
+    @Override
+    public String getUrl() {
+        return null;
     }
 }

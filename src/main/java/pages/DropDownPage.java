@@ -6,11 +6,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-import static setup.DriverSetup.getDriver;
-
 public class DropDownPage extends BasePage {
     public DropDownPage() {
-        super(getDriver());
         visit(url());
     }
 
@@ -51,5 +48,10 @@ public class DropDownPage extends BasePage {
 
     public void closeAlert() {
         driver.switchTo().alert().accept();
+    }
+
+    @Override
+    public String getUrl() {
+        return null;
     }
 }
