@@ -52,6 +52,6 @@ public class DropDownPage extends BasePage {
 
     @Override
     public String getUrl() {
-        return null;
+        return url();
     }
 }

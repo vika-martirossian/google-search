@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
@@ -12,6 +11,10 @@ public class CheckboxPage extends BasePage {
         visit(getUrl());
     }
 
+    public String url() {
+        return BASE_URL + "/checkboxes";
+    }
+
     @FindBys(
             @FindBy(css = "input[type='checkbox']")
     )
@@ -20,7 +23,7 @@ public class CheckboxPage extends BasePage {
 
     @Override
     public String getUrl() {
-        return BASE_URL + "/checkboxes";
+        return url();
     }
 
     public void clickOnCheckbox(int index) {

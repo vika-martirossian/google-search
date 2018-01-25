@@ -18,7 +18,6 @@ public class DragAndDropPage extends BasePage {
     @FindBy(css = ".ui-droppable")
     private WebElement droppable;
 
-
     public DragAndDropPage() {
         visit(getUrl());
     }
@@ -45,6 +44,7 @@ public class DragAndDropPage extends BasePage {
     }
 
     public void dragAndDrop() {
+        log.info("Draging and dropping");
         dragAndDrop(draggable, droppable);
     }
 

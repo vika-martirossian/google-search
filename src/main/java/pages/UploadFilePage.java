@@ -20,7 +20,7 @@ public class UploadFilePage extends BasePage {
 
     @Override
     public String getUrl() {
-        return null;
+        return url();
     }
 
     public String url() {
@@ -38,4 +38,6 @@ public class UploadFilePage extends BasePage {
     public String getUploadedFiles() {
         return uploadedSection.getText();
     }
+
+
 }

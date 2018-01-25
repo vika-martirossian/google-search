@@ -23,7 +23,7 @@ public class WindowPage extends BasePage{
 
     @Override
     public String getUrl() {
-        return null;
+        return url();
     }
 }
 

@@ -37,6 +37,6 @@ public class HoverPage extends BasePage{
 
     @Override
     public String getUrl() {
-        return null;
+        return url();
     }
 }
