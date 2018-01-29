@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import setup.WaitHelper;
 import sun.rmi.runtime.Log;
 
 import static setup.DriverSetup.getDriver;
@@ -30,7 +31,9 @@ public class DragAndDropPage extends BasePage {
     @Override
     protected void isLoaded() throws Error {
         log.info("i am in isLoaded!");
-        waitForElement(draggable);
+        WaitHelper.getWait()
+                .waitForElementToBeNotVisible(draggable)
+                .waitForElementToBeClickable(droppable);
 
     }
 

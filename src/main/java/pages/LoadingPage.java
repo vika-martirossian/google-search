@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import setup.WaitHelper;
 
 
 public class LoadingPage extends BasePage {
@@ -26,7 +27,12 @@ public class LoadingPage extends BasePage {
     }
 
     public boolean isFinishDisplayed() {
-       return isElementDisplayed (finishText, 10);
+       try {
+           WaitHelper.getWait().waitForElementToBeVisible(finishText);
+           return true;
+       }catch (Error e) {
+           return false;
+       }
     }
 
     public WebElement getFinish() {
@@ -34,11 +40,21 @@ public class LoadingPage extends BasePage {
     }
 
     public boolean isLoadingDisplayed() {
-        return isElementDisplayed(loadingText, 10);
+        try {
+            WaitHelper.getWait().waitForElementToBeVisible(loadingText);
+            return true;
+        } catch (Error e) {
+            return false;
+        }
     }
 
     public boolean isLoadingInvisible() {
-        return isElementInvisible(loadingText, 10);
+        try {
+            WaitHelper.getWait().waitForElementToBeNotVisible(loadingText);
+            return true;
+        } catch (Error e) {
+            return false;
+        }
     }
 
     @Override

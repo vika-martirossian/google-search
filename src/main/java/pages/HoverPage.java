@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import setup.WaitHelper;
 
 public class HoverPage extends BasePage{
 
@@ -24,11 +25,21 @@ public class HoverPage extends BasePage{
     }
 
     public boolean isHeaderDisplayed() {
-       return isElementDisplayed(find(By.className("figcaption")), 5);
+       try {
+           WaitHelper.getWait().waitForElementToBeVisible(find(By.className("figcaption")));
+           return true;
+       } catch (Error e) {
+           return false;
+       }
     }
 
     public boolean isHeaderHidden() {
-        return isElementInvisible(find(By.className("figcaption")), 5);
+        try {
+            WaitHelper.getWait().waitForElementToBeNotVisible(find(By.className("figcaption")));
+            return true;
+        } catch (Error e) {
+            return false;
+        }
     }
 
     public WebElement getHeader() {

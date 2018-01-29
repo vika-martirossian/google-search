@@ -86,36 +86,9 @@ public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableC
         return driver.findElements(locator);
     }
 
-    public boolean isElementDisplayed(WebElement element, Integer timeout) {
-        log.info("Checking visibility of " + element.toString());
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, timeout);
-            wait.until(ExpectedConditions.visibilityOf(element));
-        } catch (TimeoutException e) {
-            return false;
-        }
-        return true;
-    }
-
-    public boolean isElementInvisible(WebElement element, Integer timeout) {
-        log.info("Checking invisibility of " + element.toString());
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, timeout);
-            wait.until(ExpectedConditions.invisibilityOf(element));
-        } catch (TimeoutException e) {
-            return false;
-        }
-        return true;
-    }
-
     public Alert alert() {
         log.info("Alerting");
         return driver.switchTo().alert();
-    }
-
-    public WebElement waitForElement(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public abstract String getUrl();
