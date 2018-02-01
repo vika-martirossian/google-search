@@ -32,7 +32,7 @@ public class DragAndDropPage extends BasePage {
     protected void isLoaded() throws Error {
         log.info("i am in isLoaded!");
         WaitHelper.getWait()
-                .waitForElementToBeNotVisible(draggable)
+                .waitForElementToBeVisible(draggable)
                 .waitForElementToBeClickable(droppable);
 
     }

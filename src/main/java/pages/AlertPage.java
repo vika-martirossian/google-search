@@ -2,8 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 
-import static setup.DriverSetup.getDriver;
-
 
 public class AlertPage extends BasePage {
     private By alertButton = By.xpath("//button[text()='Click for JS Alert']");
